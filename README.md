@@ -1,3 +1,9 @@
+<!-- DEVNEGANSMITH_PREVIEW_START -->
+<p align="center">
+  <img src="assets/devnegansmith-preview.jpg" alt="DevNeganSmith FiveM Resources" width="100%">
+</p>
+<!-- DEVNEGANSMITH_PREVIEW_END -->
+
 # DevNeganSmith Headshots
 
 Sistema ligero de **headshots letales configurables** para FiveM, independiente del framework.
