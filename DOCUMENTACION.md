@@ -2,17 +2,17 @@
 
 ## Descripción
 
-`devnegansmith_headshots` es un recurso client-side para FiveM que escucha el evento nativo de daño de red y verifica si el jugador local recibió un disparo válido en el hueso de la cabeza.
+`devnegansmith_headshots` es un recurso client-side para **FiveM Qbox/QBX** que escucha el evento nativo de daño de red y verifica si el jugador local recibió un impacto válido en la cabeza.
 
-Cuando se cumplen todas las condiciones configuradas, el recurso establece la vida de la víctima en `0`, provocando una muerte inmediata por headshot.
+Cuando se cumplen las condiciones configuradas, el recurso establece la vida de la víctima en `0`, produciendo una muerte inmediata.
 
 ## Archivos
 
 ### `fxmanifest.lua`
-Define el recurso, autor, versión y archivos que FiveM debe cargar.
+Define el recurso, autor, versión y archivos cargados por FiveM.
 
 ### `config.lua`
-Contiene las opciones configurables del recurso.
+Contiene las opciones configurables.
 
 ### `client.lua`
 Contiene la detección del daño y la lógica del headshot letal.
@@ -25,16 +25,13 @@ Contiene la detección del daño y la lógica del headshot letal.
 Config.Enabled = true
 ```
 
-- `true`: el sistema está activo.
-- `false`: el recurso permanece cargado, pero no aplica headshots letales.
-
 ### Solo jugador contra jugador
 
 ```lua
 Config.PlayerVsPlayerOnly = true
 ```
 
-Con `true`, solo un atacante controlado por otro jugador puede activar el headshot letal. Esto evita que NPCs, caídas, vehículos u otras fuentes de daño se interpreten como un headshot válido.
+Con `true`, el atacante debe ser otro jugador.
 
 ### Armas excluidas
 
@@ -49,54 +46,42 @@ Añade aquí cualquier arma que no deba activar la muerte inmediata.
 
 ## Funcionamiento interno
 
-El recurso escucha:
+El recurso escucha `CEventNetworkEntityDamage` y comprueba que el sistema esté activo, que exista un atacante válido, que se cumpla la condición PvP, que el arma sea válida y que el último hueso dañado sea la cabeza (`31086`).
 
-```lua
-CEventNetworkEntityDamage
-```
+Si todo es válido, establece la salud de la víctima en `0`. Incluye una protección corta para evitar procesar dos veces el mismo evento.
 
-Después comprueba:
+## Dependencias
 
-1. Que el sistema esté habilitado.
-2. Que la víctima sea el jugador local.
-3. Que exista un atacante válido.
-4. Que, si está configurado, el atacante sea otro jugador.
-5. Que el atacante utilice un arma de fuego.
-6. Que el arma no esté en la lista de exclusión.
-7. Que el último hueso dañado sea el de la cabeza (`31086`).
-
-Si todo es válido, establece la salud de la víctima en `0`.
-
-El recurso incluye además una protección corta de 250 ms para evitar que el mismo evento de daño se procese dos veces de forma accidental.
+No requiere dependencias externas ni llamadas directas a `qbx_core`.
 
 ## Instalación
 
-Coloca:
-
 ```text
-resources/[standalone]/devnegansmith_headshots
+resources/[devnegansmith]/devnegansmith_headshots
 ```
-
-o en la categoría de recursos que utilices.
-
-Después añade:
 
 ```cfg
 ensure devnegansmith_headshots
 ```
 
-## Dependencias
+## Pruebas recomendadas
 
-No tiene dependencias obligatorias externas.
+- disparo en cabeza de jugador;
+- disparo al cuerpo;
+- arma excluida;
+- daño producido por NPC;
+- interacción con last stand;
+- interacción con ambulancia;
+- respawn y revivir;
+- recursos que alteren daño o invencibilidad.
 
-## Consideraciones de compatibilidad
-
-El recurso modifica el resultado final del daño de un headshot válido. Si otro script controla muerte, invencibilidad, daño, estados `laststand` o sistemas médicos personalizados, conviene probar la interacción en servidor antes de producción.
-
-No modifica directamente Qbox/QBX, inventarios ni base de datos.
-
-## Autor y versión
+## Autor
 
 - Autor: **DevNeganSmith**
 - Recurso: `devnegansmith_headshots`
+- Framework objetivo: **Qbox / QBX**
 - Versión: `1.0.0`
+
+## Licencia y términos
+
+Código bajo **MIT License**. Consulta [`LICENSE`](LICENSE) y [`TERMS.md`](TERMS.md).

@@ -1,20 +1,23 @@
 # DevNeganSmith Headshots
 
-Recurso ligero para **FiveM** que convierte en letal un disparo válido en la cabeza de un jugador.
+Sistema ligero de **headshots letales configurables** para servidores **FiveM Qbox/QBX**.
 
-## ¿Qué hace?
+> Creado y mantenido por **DevNeganSmith**.
+
+## Características
 
 - Detecta impactos reales en el hueso de la cabeza.
-- Mata inmediatamente al jugador cuando el impacto cumple las condiciones configuradas.
+- Convierte un headshot válido en muerte inmediata.
 - Puede limitarse únicamente a daño **jugador contra jugador**.
-- Permite excluir armas mediante `config.lua`.
+- Permite excluir armas desde `config.lua`.
 - No requiere base de datos.
-- Diseñado para funcionar de forma independiente y ser compatible con servidores Qbox/QBX.
+- No requiere llamadas directas a `qbx_core`.
+- Incluye protección breve contra procesamiento duplicado del mismo evento.
 
-## Instalación rápida
+## Instalación
 
-1. Copia la carpeta `devnegansmith_headshots` dentro de `resources`.
-2. Añade en tu `server.cfg`:
+1. Coloca `devnegansmith_headshots` dentro de tus recursos.
+2. Añade en `server.cfg`:
 
 ```cfg
 ensure devnegansmith_headshots
@@ -22,26 +25,29 @@ ensure devnegansmith_headshots
 
 3. Reinicia el recurso o el servidor.
 
-## Configuración
-
-La configuración principal se encuentra en `config.lua`.
+## Configuración rápida
 
 ```lua
 Config.Enabled = true
 Config.PlayerVsPlayerOnly = true
 ```
 
-También puedes añadir armas a `Config.ExcludedWeapons` para impedir que activen el headshot letal.
+Puedes excluir armas desde `Config.ExcludedWeapons`.
 
 ## Compatibilidad
 
 - FiveM / GTA V
 - Qbox / QBX
-- No depende de ESX ni QBCore para su lógica principal
-- Puede convivir con recursos de ambulancia siempre que estos no sobrescriban de forma incompatible el evento de daño
+- Puede convivir con sistemas médicos personalizados si no existe una lógica de muerte o invencibilidad incompatible.
 
-## Autor
+Se recomienda probar especialmente la interacción con ambulancia, last stand y recursos que modifiquen daño.
 
-**DevNeganSmith**
+## Documentación
 
-Versión: `1.0.0`
+Consulta [`DOCUMENTACION.md`](DOCUMENTACION.md) y [`TERMS.md`](TERMS.md).
+
+## Licencia
+
+Distribuido bajo **MIT License**. Consulta [`LICENSE`](LICENSE).
+
+© 2026 **DevNeganSmith**

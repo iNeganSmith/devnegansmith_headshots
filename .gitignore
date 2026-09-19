@@ -1,0 +1,9 @@
+# DevNeganSmith - FiveM resources
+*.bak
+*.log
+*.tmp
+*.temp
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
