@@ -26,5 +26,6 @@ Quien instale, use o modifique el recurso es responsable de probarlo antes de pr
 
 **Autor original:** DevNeganSmith  
 **Plataforma:** FiveM  
-**Framework objetivo:** Qbox / QBX  
+**Tipo:** Standalone / Framework Independent  
+**Compatibilidad:** ESX Legacy, QBCore y Qbox/QBX  
 **Licencia del código:** MIT License
