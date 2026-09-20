@@ -121,7 +121,7 @@ ensure devnegansmith_headshots
 - Recurso: `devnegansmith_headshots`
 - Tipo: **Standalone / Framework Independent**
 - Frameworks compatibles: **ESX Legacy, QBCore y Qbox/QBX**
-- Versión: `1.0.1`
+- Versión: `1.0.2`
 
 ## Licencia y términos
 
